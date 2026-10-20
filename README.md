@@ -17,6 +17,8 @@ pux deploy
 brew install kyukey/tap/pux
 ```
 
+Homebrew may print a warning that `postflight` is deprecated. It is harmless, and it will go away in a future release.
+
 **Scoop** (Windows)
 
 ```sh
