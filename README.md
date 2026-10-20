@@ -48,7 +48,7 @@ pux cat hi                  # print it without running it
 pux rm hi                   # delete it
 ```
 
-On Windows the first line is `pux new hi "echo hi %1"` instead. See [On Windows](#on-windows).
+On Windows the first line is `pux new hi "echo hi %~1"` instead. See [On Windows](#on-windows).
 
 Run `pux` on its own for a short overview, `pux --examples` for examples that match your system, or `pux help` for everything.
 
@@ -101,12 +101,14 @@ pux passes your command's own output and exit code straight through, so scripts 
 
 ## On Windows
 
-Commands without a shebang run with `cmd`, so arguments are `%1`, `%2` and so on, or `%*` for all of them. Double quotes work in both cmd and PowerShell:
+Commands without a shebang run with `cmd`, so arguments are `%~1`, `%~2` and so on, or `%*` to pass all of them on. Double quotes work in both cmd and PowerShell:
 
 ```bat
-pux new hi "echo hi %1"
+pux new hi "echo hi %~1"
 pux hi there
 ```
+
+pux hands each argument to cmd in quotes, so spaces and special characters survive. Plain `%1` keeps those quotes and prints `"there"`, while `%~1` removes them.
 
 In cmd, single quotes are not quotes, so `pux new hi 'echo hi'` arrives as separate words and fails. In PowerShell, single quotes work too.
 
@@ -119,7 +121,7 @@ pux new deploy
 
 A shebang works on Windows as well, as long as the interpreter is on your `PATH`. pux falls back to the bare name, so `#!/bin/bash` can find the `bash` from Git for Windows when it is on your `PATH`. Many Python installs only provide `python`, not `python3`, so use `#!/usr/bin/env python` there.
 
-`pux --examples` and the editor hints show `%1` on Windows, to match `cmd`.
+`pux --examples` and the editor hints show `%~1` on Windows, to match `cmd`.
 
 ## Finding commands
 

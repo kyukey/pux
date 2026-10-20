@@ -146,8 +146,8 @@ func (a *App) examples([]string) int {
 func oneLiner() []helpRow {
 	if runtime.GOOS == "windows" {
 		return []helpRow{
-			{`pux new hi "echo hi %1"`, "cmd reads the first argument as %1"},
-			{"pux hi there", "there becomes %1"},
+			{`pux new hi "echo hi %~1"`, "cmd reads the first argument as %~1"},
+			{"pux hi there", "there becomes %~1"},
 		}
 	}
 	return []helpRow{

@@ -32,7 +32,7 @@ type Command struct {
 //	    new   ◇ deploy
 //
 //	command   ◆  1  cd app
-//	             2  git pull
+//	              2  git pull
 func Edit(opts Options, c Command) (key, value string, err error) {
 	e := newEditor(c)
 	if err = run(e, opts); err != nil {
@@ -191,7 +191,7 @@ func (e *editor) hints() []string {
 
 func argsHint() string {
 	if runtime.GOOS == "windows" {
-		return "%1 for args"
+		return "%~1 for args"
 	}
 	return "$1 for args"
 }

@@ -42,7 +42,7 @@ One line. In cmd, single quotes are not quotes, so use double quotes. They work 
 
 ```bat
 
-pux new hi "echo hi %1"
+pux new hi "echo hi %~1"
 Several lines in PowerShell, through a single-quoted here-string, which keeps everything inside as written. The closing '@ must start its line:
 
 ```powershell
@@ -62,7 +62,7 @@ Arguments
 Words after the name are passed to the command: pux deploy prod makes prod the first argument.
 
 In sh, use $1, $2 and so on, or "$@" for all of them. Quote them, as in "$1".
-In Windows cmd, use %1, %2 and so on, or %* for all of them.
+In Windows cmd, use %~1, %~2 and so on, or %* to pass all of them on. pux hands each argument to cmd in quotes, so plain %1 keeps them and %~1 removes them.
 In a shebang script, read them the way that language does, like sys.argv in Python.
 Names
 Use lowercase letters, digits, ., _ and -, starting with a letter or digit, up to 64 characters.
