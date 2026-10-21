@@ -2,6 +2,8 @@
 
 Save commands, run them by name.
 
+![pux demo](assets/demo.gif)
+
 pux keeps the commands you type again and again in one place, so you can run them with a short name instead of digging through shell history or growing a long `.zshrc` full of aliases. It runs on macOS, Linux and Windows, and it is a single small binary with no setup.
 
 ```sh
